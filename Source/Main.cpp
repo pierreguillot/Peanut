@@ -10,7 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../../zpd/xpd/xpd.hpp"
-#include "MainComponent.h"
+#include "Peanut/Peanut.hpp"
 
 
 class PeanutApplication : public JUCEApplication
@@ -53,11 +53,12 @@ public:
     public:
         MainWindow(String name)  : DocumentWindow(name, Colours::lightgrey, DocumentWindow::allButtons)
         {
-            setUsingNativeTitleBar (true);
-            setContentOwned (new MainContentComponent(), true);
-
-            centreWithSize (getWidth(), getHeight());
-            setVisible (true);
+            setUsingNativeTitleBar(true);
+            component = new peanut::Instance();
+            component->setSize(getWidth(), getHeight());
+            setContentNonOwned(component, true);
+            setVisible(true);
+            setFullScreen(true);
         }
 
         void closeButtonPressed() override
@@ -66,6 +67,7 @@ public:
         }
 
     private:
+        ScopedPointer<Component>  component;
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
     };
 

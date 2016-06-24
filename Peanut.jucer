@@ -11,6 +11,8 @@
       <FILE id="AuNyuW" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="DtafDF" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <GROUP id="{6547156B-70CC-D114-5147-6A9A9BE71BD1}" name="Peanut">
+        <FILE id="RsKkeh" name="Peanut.cpp" compile="1" resource="0" file="Source/Peanut/Peanut.cpp"/>
+        <FILE id="JJMzKJ" name="Peanut.hpp" compile="0" resource="0" file="Source/Peanut/Peanut.hpp"/>
         <FILE id="TsauqY" name="PeanutPatcher.cpp" compile="1" resource="0"
               file="Source/Peanut/PeanutPatcher.cpp"/>
         <FILE id="R3EMKi" name="PeanutPatcher.hpp" compile="0" resource="0"

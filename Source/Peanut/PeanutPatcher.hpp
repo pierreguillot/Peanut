@@ -1,5 +1,5 @@
 /*
- // Copyright (c) 2015 Pierre Guillot.
+ // Copyright (c) 2016 Pierre Guillot.
  // For information on usage and redistribution, and for a DISCLAIMER OF ALL
  // WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 */
@@ -10,14 +10,14 @@
 #include "PeanutInterface.hpp"
 
 namespace peanut
-{
+{    
     class Patcher : public Component
     {
     public:
-        Patcher();
+        Patcher(xpd::patch const& patch);
         ~Patcher();
-        void setPatch(xpd::patch const& patch);
     private:
+        xpd::patch const&     m_patch;
         OwnedArray<Interface> m_interfaces;
         
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Patcher)
