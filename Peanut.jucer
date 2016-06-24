@@ -10,6 +10,22 @@
             file="Source/MainComponent.cpp"/>
       <FILE id="AuNyuW" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="DtafDF" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <GROUP id="{6547156B-70CC-D114-5147-6A9A9BE71BD1}" name="Peanut">
+        <FILE id="TsauqY" name="PeanutPatcher.cpp" compile="1" resource="0"
+              file="Source/Peanut/PeanutPatcher.cpp"/>
+        <FILE id="R3EMKi" name="PeanutPatcher.hpp" compile="0" resource="0"
+              file="Source/Peanut/PeanutPatcher.hpp"/>
+        <FILE id="vfoa9U" name="PeanutToggle.cpp" compile="1" resource="0"
+              file="Source/Peanut/PeanutToggle.cpp"/>
+        <FILE id="UvKUsP" name="PeanutToggle.hpp" compile="0" resource="0"
+              file="Source/Peanut/PeanutToggle.hpp"/>
+        <FILE id="PpDtqs" name="PeanutBang.cpp" compile="1" resource="0" file="Source/Peanut/PeanutBang.cpp"/>
+        <FILE id="CY5M2x" name="PeanutBang.hpp" compile="0" resource="0" file="Source/Peanut/PeanutBang.hpp"/>
+        <FILE id="EQFVdG" name="PeanutInterface.cpp" compile="1" resource="0"
+              file="Source/Peanut/PeanutInterface.cpp"/>
+        <FILE id="xzY0jL" name="PeanutInterface.hpp" compile="0" resource="0"
+              file="Source/Peanut/PeanutInterface.hpp"/>
+      </GROUP>
     </GROUP>
     <GROUP id="{D49E12EE-2E19-B60A-038C-16156C16CE4E}" name="xpd">
       <FILE id="mqyGSu" name="xpd_atom.cpp" compile="1" resource="0" file="zpd/xpd/xpd_atom.cpp"/>
@@ -180,21 +196,6 @@
         <MODULEPATH id="juce_gui_basics" path="Juce/modules"/>
       </MODULEPATHS>
     </XCODE_IPHONE>
-    <ANDROIDSTUDIO targetFolder="Builds/AndroidStudio">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" androidArchitectures="armeabi armeabi-v7a x86" isDebug="1"
-                       optimisation="1" targetName="Peanut"/>
-        <CONFIGURATION name="Release" androidArchitectures="armeabi armeabi-v7a x86"
-                       isDebug="0" optimisation="3" targetName="Peanut"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="Juce/modules"/>
-        <MODULEPATH id="juce_events" path="Juce/modules"/>
-        <MODULEPATH id="juce_graphics" path="Juce/modules"/>
-        <MODULEPATH id="juce_data_structures" path="Juce/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="Juce/modules"/>
-      </MODULEPATHS>
-    </ANDROIDSTUDIO>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
