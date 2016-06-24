@@ -11,13 +11,13 @@
 
 namespace peanut
 {
-    class Instance : public Component, public Button::Listener, public xpd::instance
+    class Instance : public TabbedComponent, public xpd::instance
     {
     public:
         Instance();
         ~Instance();
-        void paint(Graphics&) final;
-        void buttonClicked(Button* button) final;
+        
+        void load(File patch);
     private:
         OwnedArray<Patcher> m_patchers;        
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Instance)

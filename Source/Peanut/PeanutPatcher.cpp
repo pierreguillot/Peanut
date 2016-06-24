@@ -12,9 +12,7 @@ namespace peanut
     m_patch(patch)
     {
         assert(bool(patch) && "Patcher is invalid.");
-        setBounds(0, 20, 600, 400);
         setInterceptsMouseClicks(false, true);
-        
         std::vector<xpd::object> objects(patch.objects());
         for(size_t i = 0; i < objects.size(); ++i)
         {

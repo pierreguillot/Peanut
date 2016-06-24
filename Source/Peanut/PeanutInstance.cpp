@@ -8,9 +8,67 @@
 
 namespace peanut
 {
-    Instance::Instance()
+    class PatcherLoader : public Component, public ListBoxModel
     {
-        setOpaque(true);
+    public:
+        PatcherLoader(Instance& instance) : m_instance(instance)
+        {
+            File folder = File::getSpecialLocation(File::userDocumentsDirectory);
+            if(folder.exists())
+            {
+                folder.findChildFiles(m_files, File::findFiles, true, "*.pd");
+            }
+            m_table.setColour(ListBox::backgroundColourId, Env::getColorBg());
+            m_table.setColour(ListBox::outlineColourId, Env::getColorBd());
+            m_table.setOutlineThickness(Env::getBorderSize());
+            m_table.setMultipleSelectionEnabled(false);
+            m_table.setModel(this);
+            addAndMakeVisible(m_table);
+
+        }
+        
+        int getNumRows() final
+        {
+            return m_files.size();
+        }
+        
+        void paintListBoxItem(int index, Graphics& g, int width, int height, bool selected) final
+        {
+            if(selected)
+            {
+                g.fillAll(Env::getColorBd());
+                g.setColour(Env::getColorBg());
+            }
+            else
+            {
+                g.fillAll(Env::getColorBg());
+                g.setColour(Env::getColorTxt());
+            }
+            g.setFont(Env::getFont());
+            g.drawText(m_files[index].getFileNameWithoutExtension(), 2, 0, width - 4, height, Justification::centredLeft, true);
+        }
+        
+        void listBoxItemDoubleClicked(int index, const MouseEvent&) final
+        {
+            m_instance.load(m_files[index]);
+        }
+        
+        void resized() override
+        {
+            m_table.setBounds(8, 8, getWidth() - 16, getHeight() - 16);
+        }
+        
+    private:
+        Instance&   m_instance;
+        Array<File> m_files;
+        ListBox     m_table;
+    };
+    
+    Instance::Instance() : TabbedComponent(TabbedButtonBar::TabsAtTop)
+    {
+        setTabBarDepth(16);
+        setOutline(Env::getBorderSize());
+        addTab(juce::String("+"), Env::getColorBg(), new PatcherLoader(*this), true);
     }
     
     Instance::~Instance()
@@ -18,118 +76,15 @@ namespace peanut
         ;
     }
     
-    void Instance::paint(Graphics& g)
+    void Instance::load(File patch)
     {
-        /*
-        String text;
-        g.fillAll(Gui::getColorBg());
-        g.setColour(Gui::getColorBd());
-        g.drawRect(getBounds().withZeroOrigin(), Gui::getBorderSize());
-        g.drawLine(0.f, 20.f, getWidth(), 20.f, Gui::getBorderSize());
-        g.setFont(Gui::getFont());
-        g.setColour(Gui::getColorTxt());
-        xpd::patch const patch = m_processor.getPatch();
-        if(bool(patch))
+        xpd::patch p = xpd::instance::load(patch.getFileName().toStdString(), patch.getParentDirectory().getFullPathName().toStdString());
+        if(bool(p))
         {
-            g.drawText(String(patch.name()).upToLastOccurrenceOf(StringRef(".pd"), false, false),
-                       0, 0, getWidth(), 20, juce::Justification::centred);
+            int const index = getNumTabs() - 1;
+            addTab(juce::String(p.name()), Env::getColorBg(), new Patcher(p), true, index);
+            setCurrentTabIndex(index);
         }
-        else
-        {
-            g.drawText(String("No Patch"), 0, 0, getWidth(), 20, juce::Justification::centred);
-        }
-         */
-    }
-    
-    
-    void Instance::buttonClicked(Button* button)
-    {
-        /*
-        if(button)
-        {
-            juce::PopupMenu m;
-            m.addItem(1, "About");
-            m.addItem(2, "Open");
-            m.addItem(3, "Close");
-            m.addItem(4, "Reload");
-            m.addItem(5, "Export");
-            m.addItem(6, "Console");
-            m.addItem(7, "Help");
-            const int result = m.showAt(button->getScreenBounds().translated(-2, 3));
-            
-            if(result == 1)
-            {
-                m_window.setContentOwned(new GuiAbout(), false);
-                m_window.setName("About Camomile " + String(JucePlugin_VersionString));
-                m_window.addToDesktop();
-                m_window.toFront(false);
-                m_window.setAlwaysOnTop(true);
-            }
-            else if(result == 2)
-            {
-                xpd::patch const patch = m_processor.getPatch();
-                if(bool(patch))
-                {
-                    FileChooser fc("Open a patch...", File(patch.path()), "*.pd", true);
-                    if(fc.browseForFileToOpen())
-                    {
-                        juce::File file(fc.getResult());
-                        if(file.getFileExtension() == juce::String(".pd"))
-                        {
-                            m_processor.loadPatch(file.getFileName().toStdString(),
-                                                  file.getParentDirectory().getFullPathName().toStdString());
-                        }
-                    }
-                }
-                else
-                {
-                    FileChooser fc("Open a patch...", File::getSpecialLocation(File::userDocumentsDirectory), "*.pd", true);
-                    if(fc.browseForFileToOpen())
-                    {
-                        juce::File file(fc.getResult());
-                        if(file.exists() && file.getFileExtension() == juce::String(".pd"))
-                        {
-                            m_processor.loadPatch(file.getFileName().toStdString(),
-                                                  file.getParentDirectory().getFullPathName().toStdString());
-                        }
-                    }
-                }
-            }
-            else if(result == 3)
-            {
-                m_processor.closePatch();
-            }
-            else if(result == 4)
-            {
-                xpd::patch const patch = m_processor.getPatch();
-                if(bool(patch))
-                {
-                    m_processor.loadPatch(patch.name(), patch.path());
-                }
-            }
-            else if(result == 5)
-            {
-                ;
-            }
-            else if(result == 6)
-            {
-                m_window.setContentOwned(new GuiConsole(m_processor), false);
-                m_window.setName("Camomile Console");
-                m_window.addToDesktop();
-                m_window.grabKeyboardFocus();
-                m_window.toFront(true);
-                m_window.setAlwaysOnTop(true);
-            }
-            else if(result == 7)
-            {
-                juce::URL url("https://github.com/pierreguillot/Camomile/wiki");
-                if(url.isWellFormed())
-                {
-                    url.launchInDefaultBrowser();
-                }
-            }
-        }
-         */
     }
 }
 
