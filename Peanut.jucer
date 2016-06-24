@@ -6,13 +6,18 @@
               companyName="CICM" companyWebsite="https://github.com/pierreguillot/Peanut">
   <MAINGROUP id="Sa01L4" name="Peanut">
     <GROUP id="{5E5C6C2F-BD08-4728-7489-5947C77DB455}" name="Source">
-      <FILE id="GYhJHp" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
-      <FILE id="AuNyuW" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="DtafDF" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <GROUP id="{6547156B-70CC-D114-5147-6A9A9BE71BD1}" name="Peanut">
         <FILE id="RsKkeh" name="Peanut.cpp" compile="1" resource="0" file="Source/Peanut/Peanut.cpp"/>
         <FILE id="JJMzKJ" name="Peanut.hpp" compile="0" resource="0" file="Source/Peanut/Peanut.hpp"/>
+        <FILE id="sKB0aC" name="PeanutInstance.cpp" compile="1" resource="0"
+              file="Source/Peanut/PeanutInstance.cpp"/>
+        <FILE id="cOQ5ac" name="PeanutInstance.hpp" compile="0" resource="0"
+              file="Source/Peanut/PeanutInstance.hpp"/>
+        <FILE id="lMmza9" name="PeanutParameters.cpp" compile="1" resource="0"
+              file="Source/Peanut/PeanutParameters.cpp"/>
+        <FILE id="K9208D" name="PeanutParameters.hpp" compile="0" resource="0"
+              file="Source/Peanut/PeanutParameters.hpp"/>
         <FILE id="TsauqY" name="PeanutPatcher.cpp" compile="1" resource="0"
               file="Source/Peanut/PeanutPatcher.cpp"/>
         <FILE id="R3EMKi" name="PeanutPatcher.hpp" compile="0" resource="0"
@@ -184,7 +189,8 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portraitlandscape"
-                  extraDefs="HAVE_UNISTD_H=1&#10;HAVE_ALLOCA_H=1&#10;HAVE_LIBDL=1">
+                  extraDefs="HAVE_UNISTD_H=1&#10;HAVE_ALLOCA_H=1&#10;HAVE_LIBDL=1"
+                  UIFileSharingEnabled="1" customXcodeResourceFolders="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Peanut"
                        headerPath=""/>

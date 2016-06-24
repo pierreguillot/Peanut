@@ -28,7 +28,6 @@ namespace peanut
     void Toggle::mouseDown(const MouseEvent& event)
     {
         setValue(1.f - getValue());
-        int todo;
     }
 }
 

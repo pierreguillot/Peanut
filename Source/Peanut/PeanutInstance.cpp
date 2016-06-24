@@ -66,7 +66,7 @@ namespace peanut
     
     Instance::Instance() : TabbedComponent(TabbedButtonBar::TabsAtTop)
     {
-        setTabBarDepth(16);
+        setTabBarDepth(24);
         setOutline(Env::getBorderSize());
         addTab(juce::String("+"), Env::getColorBg(), new PatcherLoader(*this), true);
     }

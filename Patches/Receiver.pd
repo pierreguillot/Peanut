@@ -1,0 +1,6 @@
+#N canvas 30 47 1167 669 10;
+#X obj 20 18 tgl 30 0 tgl1 empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 20 78 tgl 30 0 tgl2 empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X coords 0 669 1 668 1136 640 0;
