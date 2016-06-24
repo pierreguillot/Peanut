@@ -12,7 +12,7 @@
 //==============================================================================
 MainContentComponent::MainContentComponent()
 {
-    setSize (600, 400);
+    setSize(600, 400);
 }
 
 MainContentComponent::~MainContentComponent()
