@@ -11,15 +11,15 @@
 
 namespace peanut
 {
-    class Instance : public TabbedComponent, public xpd::instance
+    class Instance : public xpd::instance, public Component
     {
     public:
         Instance();
         ~Instance();
-        
-        void load(File patch);
+        void resized() final;
     private:
-        OwnedArray<Patcher> m_patchers;        
+        OSCSender                m_sender;
+        ScopedPointer<Component> m_internal;
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Instance)
     };
 }

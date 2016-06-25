@@ -11,6 +11,7 @@
 #include "PeanutBang.hpp"
 #include "PeanutToggle.hpp"
 #include "PeanutPatcher.hpp"
+#include "PeanutPreferences.hpp"
 #include "PeanutInstance.hpp"
 
 namespace peanut
@@ -21,9 +22,9 @@ namespace peanut
         static inline Font getFont()
         {
 #ifdef __APPLE__
-            return Font(String("Monaco"), 13.f, juce::Font::plain).withStyle(Font::bold);
+            return Font(String("Monaco"), 13.f, juce::Font::plain);
 #else
-            return Font(String("DejaVu Sans Mono"), 12.f, juce::Font::plain).withStyle(Font::bold);
+            return Font(String("DejaVu Sans Mono"), 12.f, juce::Font::plain);
 #endif
         }
         static inline int getBorderSize() noexcept {return 1;}
@@ -31,6 +32,7 @@ namespace peanut
         static inline Colour const& getColorBd() noexcept {return Colours::darkgrey;}
         static inline Colour const& getColorTxt() noexcept {return Colours::darkgrey;}
         static inline Colour getColorInv() noexcept {return Colour(uint8(0), uint8(0), uint8(0), uint8(0));}
+        static LookAndFeel& getLookAndFeel();
     };
 }
 

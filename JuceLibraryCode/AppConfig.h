@@ -27,6 +27,7 @@
 #define JUCE_MODULE_AVAILABLE_juce_events               1
 #define JUCE_MODULE_AVAILABLE_juce_graphics             1
 #define JUCE_MODULE_AVAILABLE_juce_gui_basics           1
+#define JUCE_MODULE_AVAILABLE_juce_osc                  1
 
 //==============================================================================
 #ifndef    JUCE_STANDALONE_APPLICATION

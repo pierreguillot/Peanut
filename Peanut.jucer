@@ -14,10 +14,10 @@
               file="Source/Peanut/PeanutInstance.cpp"/>
         <FILE id="cOQ5ac" name="PeanutInstance.hpp" compile="0" resource="0"
               file="Source/Peanut/PeanutInstance.hpp"/>
-        <FILE id="lMmza9" name="PeanutParameters.cpp" compile="1" resource="0"
-              file="Source/Peanut/PeanutParameters.cpp"/>
-        <FILE id="K9208D" name="PeanutParameters.hpp" compile="0" resource="0"
-              file="Source/Peanut/PeanutParameters.hpp"/>
+        <FILE id="u3NSpc" name="PeanutPreferences.cpp" compile="1" resource="0"
+              file="Source/Peanut/PeanutPreferences.cpp"/>
+        <FILE id="FhNMqW" name="PeanutPreferences.hpp" compile="0" resource="0"
+              file="Source/Peanut/PeanutPreferences.hpp"/>
         <FILE id="TsauqY" name="PeanutPatcher.cpp" compile="1" resource="0"
               file="Source/Peanut/PeanutPatcher.cpp"/>
         <FILE id="R3EMKi" name="PeanutPatcher.hpp" compile="0" resource="0"
@@ -202,6 +202,7 @@
         <MODULEPATH id="juce_graphics" path="Juce/modules"/>
         <MODULEPATH id="juce_data_structures" path="Juce/modules"/>
         <MODULEPATH id="juce_gui_basics" path="Juce/modules"/>
+        <MODULEPATH id="juce_osc" path="Juce/modules"/>
       </MODULEPATHS>
     </XCODE_IPHONE>
   </EXPORTFORMATS>
@@ -211,6 +212,7 @@
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
 </JUCERPROJECT>
